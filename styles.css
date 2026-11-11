@@ -1,0 +1,249 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #4b3022;
+  background-color: #fff8ed;
+  min-height: 100vh;
+  line-height: 1.6;
+  position: relative;
+  isolation: isolate;
+}
+
+/* FONDO COMPLETO CON TU IMAGEN */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: url("imagenes/fondo.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ENCABEZADO */
+header {
+  background: rgba(75, 40, 25, 0.90);
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
+  animation: aparecer 1s ease both;
+}
+
+header img {
+  width: 125px;
+  height: 125px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  background: white;
+  padding: 5px;
+  transition: transform 0.4s ease;
+}
+
+header img:hover {
+  transform: scale(1.08);
+}
+
+header h1 {
+  font-size: 32px;
+}
+
+/* MENÚ DE PESTAÑAS */
+nav {
+  background: rgba(107, 63, 36, 0.95);
+  padding: 14px 8px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 7px 10px;
+  font-weight: bold;
+  display: inline-block;
+  transition: 0.3s ease;
+  padding: 5px 8px;
+  border-radius: 15px;
+}
+
+nav a:hover,
+nav a.activa {
+  color: #ffd27a;
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-3px);
+}
+
+/* CONTENEDOR */
+.contenido {
+  width: 90%;
+  max-width: 1100px;
+  margin: 35px auto;
+  min-height: 350px;
+}
+
+/* VENTANAS INDEPENDIENTES */
+.seccion {
+  display: none;
+  background: rgba(255, 248, 237, 0.96);
+  padding: 32px;
+  margin-bottom: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.22);
+}
+
+.seccion.activa {
+  display: block;
+  animation: ventana 0.65s ease both;
+}
+
+.seccion h2 {
+  color: #6b3f24;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.seccion p {
+  margin-bottom: 10px;
+}
+
+/* PRODUCTOS */
+.productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
+  margin-top: 25px;
+}
+
+.producto {
+  background: rgba(255,255,255,0.98);
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+  overflow: hidden;
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.producto:hover {
+  transform: translateY(-9px) scale(1.03);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.2);
+}
+
+.producto img {
+  width: 100%;
+  max-width: 240px;
+  height: 190px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: transform 0.5s ease;
+}
+
+.producto:hover img {
+  transform: scale(1.08);
+}
+
+.producto h3 {
+  color: #6b3f24;
+  margin: 12px 0;
+}
+
+.precio {
+  color: #238b57;
+  font-size: 23px;
+  font-weight: bold;
+  margin: 10px;
+}
+
+/* BOTONES */
+.boton {
+  display: inline-block;
+  background: #238b57;
+  color: white;
+  padding: 12px 23px;
+  margin-top: 12px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.boton:hover {
+  background: #176b40;
+  transform: scale(1.06);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* MAPA */
+.mapa {
+  width: 100%;
+  height: 320px;
+  border: 0;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+/* REDES SOCIALES */
+.redes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.redes a {
+  display: inline-block;
+  background: #6b3f24;
+  color: white;
+  padding: 12px 22px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.redes a:hover {
+  background: #238b57;
+  transform: translateY(-5px);
+}
+
+/* PIE DE PÁGINA */
+footer {
+  background: rgba(75, 40, 25, 0.95);
+  color: white;
+  text-align: center;
+  padding: 28px 15px;
+  margin-top: 35px;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes ventana {
+  from { opacity: 0; transform: translateY(35px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 600px) {
+  header h1 { font-size: 24px; }
+  nav a { margin: 4px; font-size: 12px; }
+  .seccion { padding: 22px; }
+  .mapa { height: 250px; }
+}
